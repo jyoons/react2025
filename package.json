@@ -13,10 +13,15 @@
     "sass": "^1.92.1",
     "typescript": "^4.9.5"
   },
+  "homepage": "https://jyoons.github.io/react2025",
   "scripts": {
+    "deploy": "gh-pages -d out -b gh-pages",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
-}    
+}
