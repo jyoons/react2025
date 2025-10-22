@@ -1,0 +1,130 @@
+@use '../styles/_variables' as *;
+
+// Dashboard 페이지 스타일
+.dashboard {
+  // min-height: 100vh;
+  // background: linear-gradient(135deg, $gray-50 0%, $gray-100 100%);
+  // padding: 40px 20px;
+}
+
+// .dashboard-container {
+//   max-width: 1200px;
+//   margin: 0 auto;
+// }
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: $gray-800;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+// 환영 섹션
+.welcome-section {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: $shadow-sm;
+  text-align: center;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: $gray-800;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 16px;
+    color: $gray-600;
+    line-height: 1.5;
+  }
+}
+
+
+// 통계 섹션
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: $shadow-sm;
+  text-align: center;
+  transition: transform 0.2s;
+
+  h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: $gray-600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: $primary-color;
+  }
+
+  &.chart-card {
+    .chart-container {
+      height: 400px;
+      margin-top: 16px;
+
+      .dx-widget {
+        height: 100% !important;
+      }
+    }
+  }
+}
+
+// 반응형 디자인
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px 10px;
+  }
+
+  .dashboard-title {
+    font-size: 24px;
+  }
+
+  .welcome-section {
+    padding: 30px 20px;
+
+    h2 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+}

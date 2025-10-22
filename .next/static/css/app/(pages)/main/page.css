@@ -1,0 +1,383 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[11].use[5]!./src/components/Button.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.btn {
+  width: 100%;
+  height: 44px;
+  background: #3E9BED;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.btn .btn-icon {
+  display: flex;
+  align-items: center;
+}
+.btn .btn-icon img {
+  width: 16px;
+  height: auto;
+}
+.btn.ico-only {
+  display: flex;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  border: 0;
+  background-color: none;
+  background: none;
+}
+.btn.ico-only:after {
+  content: "";
+  flex: 0 0 auto;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.btn.ico-only.i-logout:after {
+  width: 16px;
+  height: 16px;
+  background-image: url("/images/logout.png");
+}
+.btn.play-btn {
+  width: 16px;
+  height: 18px;
+  border: none;
+  background-color: transparent;
+}
+
+.section + .btn-wrap {
+  padding-top: 10px;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[11].use[5]!./src/components/ScriptPanel.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.script-panel {
+  width: 450px;
+  height: 100%;
+  background: white;
+  height: 100%;
+  padding: 16px 12px 16px 30px;
+}
+
+.script-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.script-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.script-list {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 18px;
+}
+
+.script-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px 12px 14px;
+  background: #FAFAFA;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+.script-item + .script-item {
+  margin-top: 4px;
+}
+
+.script-text {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.4;
+  flex: 1 1;
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[11].use[5]!./src/components/Section.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.section {
+  margin-bottom: 20px;
+}
+.section.full {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+}
+.section.full .cont-title {
+  margin-bottom: 0;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[11].use[5]!./src/components/Checkbox.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.chk-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.chk-box {
+  display: none;
+}
+.chk-box:checked + .chk-mark {
+  border-color: #222;
+}
+.chk-box:checked + .chk-mark::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 11px;
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 8.342' fill='none'%3E%3Cpath d='M1 4.171L3.5 6.671L10 0.171' stroke='%23222222' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.chk-mark {
+  width: 16px;
+  height: 16px;
+  background: #FFF;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.chk-text {
+  font-size: 13px;
+  font-weight: 400;
+  color: #333;
+  line-height: 16px;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[11].use[5]!./src/components/Select.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.select-wrap {
+  position: relative;
+  background: #FFF;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+.select-wrap:before {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  background-image: url("/images/arrow-b.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  transition: transform 0.2s;
+}
+.select-wrap.open:before {
+  transform: rotate(180deg);
+}
+.select-wrap .select {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  border: 0;
+  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-right: 30px;
+}
+.select-wrap .select:focus {
+  outline: none;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[11].use[5]!./src/pages/InterpreterBot.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.sidebar {
+  width: 350px;
+  height: 100%;
+  background: white;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-content {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.flex-chk-area {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 14px 0;
+}
+.flex-chk-area > label {
+  flex: 0 0 33%;
+}
+
+.extension-number {
+  font-size: 13px;
+  color: #333;
+  text-align: left;
+}
+
+.chat-area {
+  flex: 1 1;
+  background: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 14px;
+}
+
+.chat-container {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 14px 24px 16px;
+  background: #FFF;
+  border-radius: 12px;
+  overflow-y: auto;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 28px;
+  margin: 6px 0 10px;
+}
+
+.language-badge {
+  background: #F5F5F5;
+  color: #222;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chat-time {
+  font-size: 13px;
+  font-weight: 500;
+  color: #777;
+}
+
+.chat-messages {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #E9F0F8;
+  border-radius: 6px;
+  padding: 20px 10px 20px 30px;
+  overflow: hidden;
+}
+.chat-messages-inner {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+.chat-messages-inner::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.message-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.message-group.bot-message {
+  align-items: flex-end;
+}
+.message-group.user-message {
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.user-avatar {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #95BDF0;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.user-message-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+  text-align: left;
+}
+.user-message-content > div {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.user-name {
+  font-size: 12px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.message-bubble {
+  padding: 12px 14px;
+  border-radius: 12px 12px 0 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #222;
+}
+.message-bubble.bot-bubble {
+  background: #FFF5CD;
+  border: 1px solid #F2E9C3;
+}
+.message-bubble.user-bubble {
+  background: #FFF;
+  border: 1px solid #FFF;
+}
+.message-bubble.translation-bubble {
+  background: #FFD8CE;
+  border: 1px solid #F2CDC3;
+}
+
+.message-time {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 4px;
+}
