@@ -15,13 +15,15 @@
   },
   "homepage": "https://jyoons.github.io/react2025",
   "scripts": {
-    "deploy": "gh-pages -d out -b gh-pages",
+ "build": "next build",
+    "predeploy": "npx rimraf .next out && npm run build && node -e \"require('fs').mkdirSync('out',{recursive:true});require('fs').writeFileSync('out/.nojekyll','')\" && node fix-basepath.mjs",
+    "deploy": "gh-pages -d out -b gh-pages --dotfiles",
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "rimraf": "^6.0.1"
   }
 }
