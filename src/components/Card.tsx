@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import './Card.scss'
 
 interface CardProps {
   className?: string
