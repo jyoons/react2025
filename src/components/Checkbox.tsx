@@ -1,29 +1,42 @@
 import React from 'react'
 import './Checkbox.scss'
 
-interface CheckboxProps {
-  label: string
-  checked?: boolean
-  onChange?: (checked: boolean) => void
+export const Checkbox: React.FC<{
+  children?: React.ReactNode
+  className?: string
+}> = ({children, className = '' }) => {
+    return <div className={`chk-wrap ${className}`}>{children}</div>
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ label, checked = false, onChange }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.checked)
-  }
+ export const  CheckboxItem: React.FC<{
+    label?: React.ReactNode;
+    //description?: React.ReactNode;
+    checked?: boolean;
+    id?:string;
+    disabled?:boolean;
+    defaultChecked?:boolean;
+    onChange?: (checked: boolean) => void
+     }> = ({ label, checked = false, onChange, id, disabled}) => {
 
-  return (
-    <label className="chk-item">
+    const uid = React.useId();
+    const inputId = id ?? `chk-${uid}`;
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e.target.checked)
+    }
+
+ return (
+  <div className="chk-item">
       <input
+        id={inputId}
         type="checkbox"
-        className="chk-box"
         checked={checked}
+        disabled={disabled}
         onChange={handleChange}
       />
-      <span className="chk-mark"></span>
-      <span className="chk-text">{label}</span>
-    </label>
+      <label htmlFor={inputId} className="chk-label">
+        <span className="chk-mark" />
+        <span className="chk-text">{label}</span>
+      </label>
+    </div>
   )
-}
-
-export default Checkbox
+ }
