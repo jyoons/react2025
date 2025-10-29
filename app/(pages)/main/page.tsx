@@ -4,18 +4,18 @@ import React, { useState } from 'react'
 
 import ScriptPanel from '@/components/ScriptPanel'
 import Section from '@/components/Section'
-import Checkbox from '@/components/Checkbox'
+import { Checkbox, CheckboxItem } from '@/components/Checkbox'
 import Select from '@/components/Select'
 import Button from '@/components/Button'
 import '@/pages/InterpreterBot.scss'
 
 export default function Home() {
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('러시아어')
-  const handleLanguageChange = (language: string, checked: boolean) => {
+  const [selected, setSelected] = useState<string>('러시아어')
+  const handleLanguageChange = (val: string, checked: boolean) => {
     if (checked) {
-      setSelectedLanguage(language)
+      setSelected(val)
     } else {
-      setSelectedLanguage('')
+      setSelected('')
     }
   }
 
@@ -23,37 +23,37 @@ export default function Home() {
       <div className="main-container">
         {/* 왼쪽 사이드바 */}
         <aside className="sidebar">
-          <div className="sidebar-content">
+          <div className="sidebar-content"> 
             {/* 언어 선택 */}
             <Section title="언어선택">
               <div className="language-selection gray-box">
-                <div className="flex-chk-area">
-                  <Checkbox
-                    label="영어123"
-                    checked={selectedLanguage === '영어'}
-                    onChange={(checked) => handleLanguageChange('영어', checked)}
-                  />
-                  <Checkbox
-                    label="러시아어"
-                    checked={selectedLanguage === '러시아어'}
-                    onChange={(checked) => handleLanguageChange('러시아어', checked)}
-                  />
-                  <Checkbox
-                    label="일본어"
-                    checked={selectedLanguage === '일본어'}
-                    onChange={(checked) => handleLanguageChange('일본어', checked)}
-                  />
-                  <Checkbox
-                    label="베트남어"
-                    checked={selectedLanguage === '베트남어'}
-                    onChange={(checked) => handleLanguageChange('베트남어', checked)}
-                  />
-                  <Checkbox
-                    label="중국어"
-                    checked={selectedLanguage === '중국어'}
-                    onChange={(checked) => handleLanguageChange('중국어', checked)}
-                  />
-                </div>
+                <Checkbox className='flex-chk-area'>
+                    <CheckboxItem
+                      label="영어"
+                      checked={selected === '영어'}
+                      onChange={(checked) => handleLanguageChange('영어', checked)}
+                    />
+                    <CheckboxItem
+                      label="러시아어"
+                      checked={selected === '러시아어'}
+                      onChange={(checked) => handleLanguageChange('러시아어', checked)}
+                    />
+                    <CheckboxItem
+                      label="일본어"
+                      checked={selected === '일본어'}
+                      onChange={(checked) => handleLanguageChange('일본어', checked)}
+                    />
+                    <CheckboxItem
+                      label="베트남어"
+                      checked={selected === '베트남어'}
+                      onChange={(checked) => handleLanguageChange('베트남어', checked)}
+                    />
+                    <CheckboxItem
+                      label="중국어"
+                      checked={selected === '중국어'}
+                      onChange={(checked) => handleLanguageChange('중국어', checked)}
+                    />
+                  </Checkbox>
               </div>
             </Section>
 

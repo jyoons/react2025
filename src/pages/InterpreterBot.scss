@@ -13,15 +13,7 @@
     overflow-y: auto;
   }
 }
-.flex-chk-area{
-  display:flex;
-  flex-wrap: wrap;
-  width:100%;
-  gap:14px 0;
-  &>label{
-    flex:0 0 33%;
-  }
-}
+
 .extension-number {
   font-size: 13px;
   color: $gray-700;

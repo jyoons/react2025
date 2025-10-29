@@ -36,6 +36,9 @@
           background-position: center;
         }
       }
+       &:disabled + .chk-label .chk-mark {
+          opacity:0.2
+       }
     }
   }
   &-label{

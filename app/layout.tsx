@@ -1,10 +1,11 @@
 import '@/styles/globals.scss'
 import '@/components/Header.scss'
 import Header from '@/components/Header'
+import '@/components/Button.scss'
 
 export const metadata = {
-  title: '통역봇 시스템',
-  description: '통역봇 시스템',
+  title: 'react',
+  description: 'react',
 }
 
 export default function RootLayout({
