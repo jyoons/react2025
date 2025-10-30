@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>three.js CDN (no modules, r128)</title>
+  <style>
+    html, body { height: 100%; margin: 0; overflow: hidden; background: #101010; }
+    canvas { display: block; }
+    .tag {
+      position: fixed; left: 12px; bottom: 12px;
+      background: rgba(0,0,0,0.2); color: #fff; padding: 6px 10px;
+      border-radius: 8px; font: 12px system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="tag">🧱 three.js — CDN only, no modules (r128)</div>
+
+  <!-- 1) three.js 전역 스크립트 (r128) -->
+  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+  <!-- 2) OrbitControls (전역 THREE.OrbitControls 로 등록됨) -->
+  <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- 3) 우리 코드 -->
+  <script>
+    // 기본 세팅
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xfffffff);
+
+    const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 100);
+    camera.position.set(3, 2, 5);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(innerWidth, innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // ✅ 핵심 수정: THREE.OrbitControls 사용!
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    // 조명
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(-5, 5, 5);
+    scene.add(light);
+    // 환경광 추가 
+    const ambient = new THREE.AmbientLight(0xffffff, 0.2); 
+    scene.add(ambient);
+
+    // 큐브
+    // const cube = new THREE.Mesh(
+    //   new THREE.BoxGeometry(1.6, 1.6, 1.6),
+    //   new THREE.MeshStandardMaterial({ color: 0x44ccff, metalness: 0.3, roughness: 0.5 })
+    // );
+
+    const cube = new THREE.Mesh(
+      new THREE.BoxGeometry(1.6, 1.6, 1.6),
+      new THREE.MeshStandardMaterial({
+        color: 0x99ccff,
+        // transparent: true,
+        // opacity: 0.4,
+        // roughness: 0,
+        // metalness: 0,
+        // transmission: 0.9,  // ✅ 내부 투과율 (유리 느낌)
+        // ior: 1.5,           // 굴절률
+        // thickness: 0.1,     // 두께감
+        // clearcoat: 1.0,
+      })
+    );
+    scene.add(cube);
+
+    // 바닥 주석 처리
+    // const floor = new THREE.Mesh(
+    //   new THREE.PlaneGeometry(20, 20),
+    //   new THREE.MeshStandardMaterial({ color: 0x222222 })
+    // );
+    // floor.rotation.x = -Math.PI / 2;
+    // floor.position.y = -1.2;
+    // scene.add(floor);
+
+    // Hover 감지
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let isHovering = false;
+
+    function updateHover(e) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+      const hit = raycaster.intersectObject(cube, false).length > 0;
+      if (hit !== isHovering) {
+        isHovering = hit;
+        renderer.domElement.style.cursor = isHovering ? "pointer" : "grab";
+      }
+    }
+    renderer.domElement.addEventListener("pointermove", updateHover);
+
+    // 루프
+    function animate() {
+      requestAnimationFrame(animate);
+      if (!isHovering) {
+        cube.rotation.x += 0.01; // 위 아래
+        cube.rotation.y += 0.015; // 왼쪽 오른쪽 rotate 방향
+      }
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // 리사이즈
+    addEventListener("resize", () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>투명 + 윤곽선 큐브</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background:#CCC; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 100);
+  camera.position.set(3, 2, 5);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(innerWidth, innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+
+  // 💡 조명
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(-5, 5, 5);
+  scene.add(light);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+  // 환경광 추가 
+  const ambient = new THREE.AmbientLight(0xffffff, 0.5); 
+  scene.add(ambient);
+
+  // 투명한 면
+  const geometry = new THREE.BoxGeometry(1.6, 1.6, 1.6);
+  const transparentMaterial = new THREE.MeshPhysicalMaterial({
+    color: 0x44ccff,
+    transparent:false,
+    opacity:1,
+    roughness: 0.5,
+    metalness: 0.15,
+    // transmission: 1.0,  // 유리 느낌
+    // ior: 1.4,
+    // thickness: 0.1,
+    // side: THREE.DoubleSide,
+    depthWrite: false
+  });
+
+  const cube = new THREE.Mesh(geometry, transparentMaterial);
+  scene.add(cube);
+
+  // 윤곽선 (와이어프레임)
+  const edges = new THREE.EdgesGeometry(geometry);
+  const line = new THREE.LineSegments(
+    edges,
+    new THREE.LineBasicMaterial({ color: 0x44ccff, linewidth: 1 })
+  );
+  scene.add(line);
+
+  // Hover 감지
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+  let isHovering = false;
+
+  function updateHover(e) {
+    const rect = renderer.domElement.getBoundingClientRect();
+    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    const hit = raycaster.intersectObject(cube, false).length > 0;
+    if (hit !== isHovering) {
+      isHovering = hit;
+      renderer.domElement.style.cursor = isHovering ? "pointer" : "grab";
+    }
+  }
+  renderer.domElement.addEventListener("pointermove", updateHover);
+
+  // 애니메이션
+  function animate() {
+  requestAnimationFrame(animate);
+  if (!isHovering) {
+    cube.rotation.x += 0.005;
+    cube.rotation.y += 0.01;
+    }
+    line.rotation.copy(cube.rotation); // 윤곽선도 같이 회전
+    controls.update();
+    renderer.render(scene, camera); 
+  }
+  animate();
+  addEventListener("resize", () => {
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+</script>
+</body>
+</html>
